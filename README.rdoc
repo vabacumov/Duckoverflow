@@ -1,0 +1,49 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+##Quack Overflow
+  Brooks Roley
+  Patrick Lauer
+  Antonio Dangond
+  Ori Pleban
+
+##MVP
+Quack Overflow is a site where users can go to share information on quack-related topics:
+  A user can sign up and login
+  A user can post questions on quack-related topics
+  A user can post answers to questions posted by users
+  A user can post comments on questions and answers
+  Non-logged in users can view questions, answers, and comments but can't post
+  Quack overflow will include minimal CSS stylings
+
+--Stretch
+  A user can upvote/downvote on questions and answers
+  A user can edit and delete their own questions, answers, and comments
+  Quack Overflow will include duck imagery
+
+
+Things you may want to cover:
+
+* Ruby version - 1.9.3
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
