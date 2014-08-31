@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get '/users/login' => "users#login"
   post '/login_user' => "users#login_user"
 
-  post '/upvotes' => "votes#upvote", as: "Upvote"
-  post '/downvotes' => "votes#downvote", as: "Downvote"
+  post '/up_question_votes' => "votes#up_question_vote", as: "Up_question_vote"
+  post '/down_question_votes' => "votes#down_question_vote", as: "Down_question_vote"
+  post '/answers/:answer_id/up_answer_votes' => "votes#up_answer_vote", as: "Up_answer_vote"
+  post '/answers/:answer_id/down_answer_votes' => "votes#down_answer_vote", as: "Down_answer_vote"
+
 
   resources :users, shallow: true do
     resources :questions
