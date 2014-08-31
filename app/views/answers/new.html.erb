@@ -1,0 +1,11 @@
+<%= form_for @answer do |a| %>
+<p>
+  <%= a.label :content %>
+  <%= a.text_area :content %>
+</p>
+<p>
+  <input type="hidden" name="question_id" value="<%= params[:question_id] %>" />
+</p>
+<p><%= a.submit :create %></p>
+<% end %>
+
