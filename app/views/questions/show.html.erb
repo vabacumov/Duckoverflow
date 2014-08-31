@@ -1,1 +1,10 @@
-show.html.erb
+  <% provide(:title, @question.title) %>
+  <h1>
+    <%= @question.title%>
+  </h1>
+  <h4>
+    <%= @question.content %>
+  </h4>
+  <h5>
+    created by: <%= @question.user.username %>
+  </h5>
