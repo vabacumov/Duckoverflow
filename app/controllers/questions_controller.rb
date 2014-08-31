@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   def new
     @question =  Question.new
   end
+  
   #show is serving as the new controller for now
   def show
     # @question =  Question.new
