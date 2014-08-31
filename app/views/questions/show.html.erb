@@ -1,4 +1,4 @@
- <% provide(:title, @question.title) %>
+<% provide(:title, @question.title) %>
 <h1>
   <%= @question.title%>
 </h1>
@@ -10,12 +10,12 @@
 </h5>
 <h6>
   <% @comments.each do |comment| %>
-  <%= comment.content %> - <%= comment.user.username %>
+  <%= comment.content %> - <%= comment.user.username %> <br>
   <% end %>
 </h6>
 
 <% if session[:user_id] %>
-<%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
+  <%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
 <% end %>
 
 <% if session[:user_id] %>
