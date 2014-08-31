@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
 
 
   def create
-    @question =  Question.new(title: params[:title], content: params[:content])
+    @question =  Question.new(question_params)
     user = User.find(session[:user_id])
     @question.user = user
     if @question.save
@@ -26,5 +26,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :content)
+  end
 end
 
