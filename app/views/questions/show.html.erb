@@ -30,8 +30,8 @@
 <% if @answers %>
 <% @answers.each_with_index do |answer, i| %>
 <h3>Answer <%= i+1 %>:  <%= answer.content %><h3>
-  <%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
-  <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %>
+  <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
+  <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
   <h6>
     <% answer.comments.each do |comment| %>
     <%= comment.content %> - <%= comment.user.username %> <br>
