@@ -1,10 +1,16 @@
-  <% provide(:title, @question.title) %>
-  <h1>
-    <%= @question.title%>
-  </h1>
-  <h4>
-    <%= @question.content %>
-  </h4>
-  <h5>
-    created by: <%= @question.user.username %>
-  </h5>
+<% provide(:title, @question.title) %>
+<h1>
+  <%= @question.title%>
+</h1>
+<h4>
+  <%= @question.content %>
+</h4>
+<h5>
+  created by: <%= @question.user.username %>
+</h5>
+<% if session[:user_id] %>
+  <form action="/questions/<%= params[:id] %>/answers/new" method="get">
+    <input type="submit" value="Answer">
+  </form>
+<% end %>
+

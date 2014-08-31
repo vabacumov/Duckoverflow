@@ -4,18 +4,15 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question =  Question.new
-  end
-  
-  #show is serving as the new controller for now
-  def show
-    # @question =  Question.new
-    @question =  Question.find(params[:id])
+    @question = Question.new
   end
 
+  def show
+    @question = Question.find(params[:id])
+  end
 
   def create
-    @question =  Question.new(question_params)
+    @question = Question.new(question_params)
     user = User.find(session[:user_id])
     @question.user = user
     if @question.save
