@@ -3,7 +3,9 @@
 
 <div class="row">
   <div class="span6 offset3">
-
+    <% if @error %>
+      <p>Username or password is incorrect. Please try again!</p>
+    <% end %>
     <%= form_tag '/login_user' do -%>
 
       <%= label_tag :username, 'Username: ' %><br>
