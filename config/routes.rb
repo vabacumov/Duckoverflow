@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   resources :answers, shallow: true do
     resources :comments
   end
-
 end

@@ -1,9 +1,16 @@
+<% provide(:title, 'Ask a Question') %>
 <h1>Ask a Question</h1>
 
-<%= form_tag("/questions", method:"post") do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %>
-  <%= label_tag(:content, "Content:") %>
-  <%= text_field_tag(:content) %>
-  <%= submit_tag("Submit") %>
-<% end %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @question do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.submit "Ask my Question", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
