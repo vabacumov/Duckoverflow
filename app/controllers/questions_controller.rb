@@ -25,11 +25,5 @@ class QuestionsController < ApplicationController
     end
   end
 
-  private
-
-    def question_params
-      params.require(:question).permit(:name, :email, :password,
-                                   :password_confirmation)
-    end
 end
 
