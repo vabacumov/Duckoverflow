@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   #show is serving as the new controller for now
   def show
     # @question =  Question.new
-    # @question =  Question.find(params[:id])
+    @question =  Question.find(params[:id])
   end
 
 
@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
     user = User.find(session[:user_id])
     @question.user = user
     if @question.save
-      flash[:success] = "Welcome to the Sample App!"
+      # flash[:success] = "Welcome to the Sample App!"
       redirect_to @question
     else
       render 'new'
