@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829203441) do
+ActiveRecord::Schema.define(version: 20140831210503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140829203441) do
     t.string   "username",   limit: 30, null: false
     t.string   "password",   limit: 30, null: false
     t.string   "email",      limit: 30, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "voteable_id",   null: false
+    t.string   "voteable_type", null: false
+    t.boolean  "upvote"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
