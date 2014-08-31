@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   #show is serving as the new controller for now
   def show
     @question = Question.find(params[:id])
+    session[:question_id] = @question.id
     @answers = @question.answers
     @comments = @question.comments
   end

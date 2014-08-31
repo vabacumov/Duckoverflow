@@ -2,6 +2,8 @@
 <h1>
   <%= @question.title%>
 </h1>
+<%= link_to 'Vote Up', Upvote_path(@vote), method: :post %>
+<%= link_to 'Vote Down', Downvote_path(@vote), method: :post %>
 <h4>
   <%= @question.content %>
 </h4>

@@ -5,21 +5,21 @@ Rails.application.routes.draw do
   get '/users/login' => "users#login"
   post '/login_user' => "users#login_user"
 
+  post '/upvotes' => "votes#upvote", as: "Upvote"
+  post '/downvotes' => "votes#downvote", as: "Downvote"
+
   resources :users, shallow: true do
     resources :questions
     resources :answers
     resources :comments
-    resources :votes
   end
 
   resources :questions, shallow: true do
     resources :answers
     resources :comments
-    resources :votes
   end
 
   resources :answers, shallow: true do
     resources :comments
-    resources :votes
   end
 end
