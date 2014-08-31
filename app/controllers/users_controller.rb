@@ -27,9 +27,14 @@ class UsersController < ApplicationController
 
   def login_user
     @user = User.find_by_username(params[:username])
-    session[:user_id] = @user.id if @user.password == params[:password]
-    p session[:user_id]
-    redirect_to @user
+    if @user && @user.password == params[:password]
+      session[:user_id] = @user.id
+      @error = false
+      redirect_to @user
+    else
+      @error = true
+      render 'login'
+    end
   end
 
   def logout
