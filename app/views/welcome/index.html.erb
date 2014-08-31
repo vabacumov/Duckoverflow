@@ -6,7 +6,7 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<% if !(session[:user_id].nil?) %>
+<% if session[:user_id] %>
   <%= link_to "Ask a Question", new_user_question_path(session[:user_id]) %>
 <%end %>
 <%= link_to "Browse Questions", questions_path %>
