@@ -8,3 +8,12 @@
   <h5>
     created by: <%= @question.user.username %>
   </h5>
+  <h6>
+    <% @comments.each do |comment| %>
+    <%= comment.content %> - <%= comment.user.username %>
+    <% end %>
+  </h6>
+
+  <% if session[:user_id] %>
+  <%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
+  <% end %>
