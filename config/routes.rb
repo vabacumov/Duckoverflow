@@ -9,14 +9,17 @@ Rails.application.routes.draw do
     resources :questions
     resources :answers
     resources :comments
+    resources :votes
   end
 
   resources :questions, shallow: true do
     resources :answers
     resources :comments
+    resources :votes
   end
 
   resources :answers, shallow: true do
     resources :comments
+    resources :votes
   end
 end
