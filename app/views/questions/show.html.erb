@@ -2,6 +2,8 @@
 <h1>
   <%= @question.title%>
 </h1>
+<%= link_to 'Vote Up', '/up_question_votes', method: :post %>
+<%= link_to 'Vote Down', '/down_question_votes', method: :post %>
 <h4>
   <%= @question.content %>
 </h4>
@@ -15,7 +17,7 @@
 </h6>
 
 <% if session[:user_id] %>
-  <%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
+<%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
 <% end %>
 
 <% if session[:user_id] %>
@@ -26,18 +28,19 @@
 
 
 <% if @answers %>
-  <% @answers.each_with_index do |answer, i| %>
-    <h3>Answer <%= i+1 %>:  <%= answer.content %><h3>
-
-    <h6>
-      <% answer.comments.each do |comment| %>
-      <%= comment.content %> - <%= comment.user.username %> <br>
-      <% end %>
-    </h6>
-
-    <% if session[:user_id] %>
-      <%= link_to 'Comment', new_answer_comment_path(session[:user_id]) %>
+<% @answers.each_with_index do |answer, i| %>
+<h3>Answer <%= i+1 %>:  <%= answer.content %><h3>
+  <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
+  <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
+  <h6>
+    <% answer.comments.each do |comment| %>
+    <%= comment.content %> - <%= comment.user.username %> <br>
     <% end %>
+  </h6>
+
+  <% if session[:user_id] %>
+  <%= link_to 'Comment', new_answer_comment_path(session[:user_id]) %>
+  <% end %>
 
   <% end %>
-<% end %>
+  <% end %>
