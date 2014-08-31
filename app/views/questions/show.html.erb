@@ -10,12 +10,12 @@
 </h5>
 <h6>
   <% @comments.each do |comment| %>
-  <%= comment.content %> - <%= comment.user.username %>
+  <%= comment.content %> - <%= comment.user.username %> <br>
   <% end %>
 </h6>
 
 <% if session[:user_id] %>
-<%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
+  <%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
 <% end %>
 
 <% if session[:user_id] %>
@@ -24,11 +24,20 @@
 </form>
 <% end %>
 
-<ul>
+
 <% if @answers %>
-  <% @answers.each_with_index do |a, i| %>
-    <li>Answer <%= i+1 %></li>
-    <li>Content: <%= a.content %></li>
+  <% @answers.each_with_index do |answer, i| %>
+    <h3>Answer <%= i+1 %>:  <%= answer.content %><h3>
+
+    <h6>
+      <% answer.comments.each do |comment| %>
+      <%= comment.content %> - <%= comment.user.username %> <br>
+      <% end %>
+    </h6>
+
+    <% if session[:user_id] %>
+      <%= link_to 'Comment', new_answer_comment_path(session[:user_id]) %>
+    <% end %>
+
   <% end %>
 <% end %>
-</ul>
