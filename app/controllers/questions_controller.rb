@@ -7,8 +7,11 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  #show is serving as the new controller for now
   def show
-    @question = Question.find(params[:id])
+    # @question =  Question.new
+    @question =  Question.find(params[:id])
+    @comments = @question.comments
   end
 
   def create
