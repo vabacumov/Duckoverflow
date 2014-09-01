@@ -17,4 +17,5 @@ module ApplicationHelper
     end
     counter
   end
+
 end
