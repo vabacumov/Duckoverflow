@@ -3,8 +3,8 @@
   <%= score_of_votes(@question) %> - <%= @question.title%>
 </h1>
 <%if session[:user_id] %>
-  <%= link_to 'Vote Up', '/up_question_votes', method: :post %>
-  <%= link_to 'Vote Down', '/down_question_votes', method: :post %>
+  <%= link_to image_tag('duck_up.png', height: 'auto', width: '8%'), '/up_question_votes', method: :post %>
+  <%= link_to image_tag('duck_down.png', height: 'auto', width: '8%'), '/down_question_votes', method: :post %>
 <% end %>
 <h4>
   <%= @question.content %>
@@ -33,8 +33,8 @@
   <% @answers.each_with_index do |answer, i| %>
     <h3><%= score_of_votes(answer) %> - Answer <%= i+1 %>:  <%= answer.content %><h3>
     <% if session[:user_id] %>
-      <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
-      <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
+      <h5><%= link_to image_tag('duck_up.png', height: 'auto', width: '8%'), Up_answer_vote_path(answer), method: :post %>
+      <%= link_to image_tag('duck_down.png', height: 'auto', width: '8%'), Down_answer_vote_path(answer), method: :post %></h5>
     <% end %>
 
     <h6>
