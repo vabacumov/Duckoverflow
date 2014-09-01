@@ -14,37 +14,37 @@
 </h5>
 <h6>
   <% @comments.each do |comment| %>
-  <%= comment.content %> - <%= comment.user.username %> <br>
+    <%= comment.content %> - <%= comment.user.username %> <br>
   <% end %>
 </h6>
 
 <% if session[:user_id] %>
-<%= link_to 'Comment', new_question_comment_path(@question) %>
+  <%= link_to 'Comment', new_question_comment_path(@question) %>
 <% end %>
 
 <% if session[:user_id] %>
-<form action="/questions/<%= params[:id] %>/answers/new" method="get">
-  <input type="submit" value="Answer">
-</form>
+  <form action="/questions/<%= params[:id] %>/answers/new" method="get">
+    <input type="submit" value="Answer">
+  </form>
 <% end %>
 
 
 <% if @answers %>
-<% @answers.each_with_index do |answer, i| %>
-<h3><%= score_of_votes(answer) %> - Answer <%= i+1 %>:  <%= answer.content %><h3>
-  <% if session[:user_id] %>
-  <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
-  <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
-  <% end %>
-  <h6>
-    <% answer.comments.each do |comment| %>
-    <%= comment.content %> - <%= comment.user.username %> <br>
+  <% @answers.each_with_index do |answer, i| %>
+    <h3><%= score_of_votes(answer) %> - Answer <%= i+1 %>:  <%= answer.content %><h3>
+    <% if session[:user_id] %>
+      <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
+      <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
     <% end %>
-  </h6>
 
-  <% if session[:user_id] %>
-  <%= link_to 'Comment', new_answer_comment_path(session[:user_id]) %>
-  <% end %>
+    <h6>
+      <% answer.comments.each do |comment| %>
+        <%= comment.content %> - <%= comment.user.username %> <br>
+      <% end %>
+    </h6>
 
+    <% if session[:user_id] %>
+      <%= link_to 'Comment', new_answer_comment_path(answer) %>
+    <% end %>
   <% end %>
-  <% end %>
+<% end %>
