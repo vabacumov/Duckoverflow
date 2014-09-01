@@ -19,7 +19,7 @@
 </h6>
 
 <% if session[:user_id] %>
-<%= link_to 'Comment', new_question_comment_path(session[:user_id]) %>
+<%= link_to 'Comment', new_question_comment_path(@question) %>
 <% end %>
 
 <% if session[:user_id] %>
