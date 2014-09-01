@@ -1,9 +1,11 @@
 <% provide(:title, @question.title) %>
 <h1>
-  <%= @question.title%>
+  <%= score_of_votes(@question) %> - <%= @question.title%>
 </h1>
-<%= link_to 'Vote Up', '/up_question_votes', method: :post %>
-<%= link_to 'Vote Down', '/down_question_votes', method: :post %>
+<%if session[:user_id] %>
+  <%= link_to 'Vote Up', '/up_question_votes', method: :post %>
+  <%= link_to 'Vote Down', '/down_question_votes', method: :post %>
+<% end %>
 <h4>
   <%= @question.content %>
 </h4>
@@ -29,9 +31,11 @@
 
 <% if @answers %>
 <% @answers.each_with_index do |answer, i| %>
-<h3>Answer <%= i+1 %>:  <%= answer.content %><h3>
+<h3><%= score_of_votes(answer) %> - Answer <%= i+1 %>:  <%= answer.content %><h3>
+  <% if session[:user_id] %>
   <h5><%= link_to 'Vote Up', Up_answer_vote_path(answer), method: :post %>
   <%= link_to 'Vote Down', Down_answer_vote_path(answer), method: :post %></h5>
+  <% end %>
   <h6>
     <% answer.comments.each do |comment| %>
     <%= comment.content %> - <%= comment.user.username %> <br>

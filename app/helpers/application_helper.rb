@@ -5,4 +5,17 @@ module ApplicationHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def score_of_votes(object)
+    counter = 0
+    object.votes.each do |vote|
+      if vote.upvote == true
+        counter += 1
+      else
+        counter -= 1
+      end
+    end
+    counter
+  end
+
 end
